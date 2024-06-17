@@ -18,5 +18,12 @@ icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant %USER%:
 cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 del "START VM - Sonda.bat"
 
+:: Importar la VM
+cd "C:\Program Files (x86)\VMware\VMware Workstation\"
+OVFTool\ovftool.exe "C:\Users\%USER%\Downloads\MIA+PROMETHEUS v3\MIA+PROMETHEUS.ovf" "C:\Virtual Machines\MIA+PROMETHEUS.vmx"
+
+:: Correr el Vmware con permisos de admin
+PowerShell -Command "Start-Process PowerShell -ArgumentList '-NoProfile -Command \"Start-Process \\\"C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmware.exe\\\" -Verb RunAs\"' -Verb RunAs"
+
 endlocal
 pause
