@@ -4,6 +4,14 @@ setlocal
 :: Obtener el nombre del usuario actual
 set USER=%USERNAME%
 
+ping 10.10.0.6
+ping 10.10.0.7
+ping 10.10.0.8
+
+echo SONDA 2
+ping 10.10.0.5
+ping 10.10.0.4
+ping 10.10.0.3
 :: Configurar el servicio VmwareAutostartService
 sc config VmwareAutostartService start=auto
 sc config VmwareAutostartService obj= ".\%USER%" password= "1234"
@@ -12,7 +20,7 @@ sc config VmwareAutostartService obj= ".\%USER%" password= "1234"
 start services.msc
 
 :: Modificar permisos del archivo vmautostart.xml
-icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant %USER%:(F)
+icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant "%USER%":(F)
 
 :: Eliminar el archivo START VM - Sonda.bat en la carpeta de inicio
 cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
