@@ -4,14 +4,14 @@ setlocal
 :: Obtener el nombre del usuario actual
 set USER=%USERNAME%
 
-ping -n 1 10.10.0.6
-ping -n 1 10.10.0.7
-ping -n 1 10.10.0.8
+ping -n 2 10.10.0.6
+ping -n 2 10.10.0.7
+ping -n 2 10.10.0.8
 
 echo SONDA 2
-ping -n 1 10.10.0.5
-ping -n 1 10.10.0.4
-ping -n 1 10.10.0.3
+ping -n 2 10.10.0.5
+ping -n 2 10.10.0.4
+ping -n 2 10.10.0.3
 :: Configurar el servicio VmwareAutostartService
 sc config VmwareAutostartService start=auto
 sc config VmwareAutostartService obj= ".\%USER%" password= "1234"
