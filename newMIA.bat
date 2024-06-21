@@ -4,14 +4,14 @@ setlocal
 :: Obtener el nombre del usuario actual
 set USER=%USERNAME%
 
-ping 10.10.0.6
-ping 10.10.0.7
-ping 10.10.0.8
+ping -n 1 10.10.0.6
+ping -n 1 10.10.0.7
+ping -n 1 10.10.0.8
 
 echo SONDA 2
-ping 10.10.0.5
-ping 10.10.0.4
-ping 10.10.0.3
+ping -n 1 10.10.0.5
+ping -n 1 10.10.0.4
+ping -n 1 10.10.0.3
 :: Configurar el servicio VmwareAutostartService
 sc config VmwareAutostartService start=auto
 sc config VmwareAutostartService obj= ".\%USER%" password= "1234"
@@ -25,6 +25,9 @@ icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant "%USER%
 :: Eliminar el archivo START VM - Sonda.bat en la carpeta de inicio
 cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 del "START VM - Sonda.bat"
+
+cd "C:\Virtual Machines"
+rmdir /s /q "MIA+PROMETEUS"
 
 :: Importar la VM
 cd "C:\Program Files (x86)\VMware\VMware Workstation\"

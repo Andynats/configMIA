@@ -23,6 +23,10 @@ start services.msc
 :: Modificar permisos del archivo vmautostart.xml
 icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant "%USER%":(F)
 
+
+cd "C:\Virtual Machines"
+rmdir /s /q "MIA+PROMETEUS"
+
 :: Eliminar el archivo START VM - Sonda.bat en la carpeta de inicio
 cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 del "START VM - Sonda.bat"
