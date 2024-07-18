@@ -26,8 +26,15 @@ icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant "%USER%
 cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
 del "START VM - Sonda.bat"
 
+::Eliminar archivos anteriores
 cd "C:\Virtual Machines"
 rmdir /s /q "MIA+PROMETEUS"
+del "MIA+PROMETHEUS-disk1.vmdk"
+del "MIA+PROMETHEUS.vmx"
+
+::Eliminar el startup
+cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
+del "START VM - Sonda.bat"
 
 :: Importar la VM
 cd "C:\Program Files (x86)\VMware\VMware Workstation\"
