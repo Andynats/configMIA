@@ -20,6 +20,16 @@ sc config VmwareAutostartService obj= ".\%USER%" password= "1234"
 :: Abrir el administrador de servicios
 start services.msc
 
+:: Eliminar el archivo START VM - Sonda.bat en la carpeta de inicio
+cd "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
+del "START VM - Sonda.bat"
+
+::Eliminar archivos anteriores
+cd "C:\Virtual Machines"
+rmdir /s /q "C:\Virtual Machines\MIA+PROMETHEUS"
+del "C:\Virtual Machines\MIA+PROMETHEUS-disk1.vmdk"
+del "C:\Virtual Machines\MIA+PROMETHEUS.vmx"
+
 :: Modificar permisos del archivo vmautostart.xml
 icacls "C:\ProgramData\VMware\VMware Workstation\vmautostart.xml" /grant "%USER%":(F)
 
