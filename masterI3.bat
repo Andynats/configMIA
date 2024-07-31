@@ -41,6 +41,7 @@ del "START VM - Sonda.bat"
 
 :: Correr el Vmware con permisos de admin
 ::PowerShell -Command "Start-Process PowerShell -ArgumentList '-NoProfile -Command \"Start-Process \\\"C:\\Program Files (x86)\\VMware\\VMware Workstation\\vmware.exe\\\" -Verb RunAs\"' -Verb RunAs"
+"C:\Program Files (x86)\VMware\VMware Workstation\vmware.exe"
 
 endlocal
 pause
